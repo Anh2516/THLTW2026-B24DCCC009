@@ -56,6 +56,12 @@
 	// 		},
 	// 	],
 	// },
+	{
+		path: 'Test1',
+		name: 'Test1',
+		component: './Test1',
+		icon: 'copy',
+	},
 
 	{
 		path: '/notification',
