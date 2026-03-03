@@ -1,4 +1,4 @@
-﻿export default [
+﻿﻿export default [
 	{
 		path: '/user',
 		layout: false,
@@ -56,7 +56,25 @@
 	// 		},
 	// 	],
 	// },
-
+	
+	{
+		path: '/quan-ly-san-pham',
+		name: 'Quản lý sản phẩm',
+		icon: 'shopping',
+		component: './QuanLySanPham',
+	},
+	{
+		path: '/quan-ly-don-hang',
+		name: 'Quản lý đơn hàng',
+		icon: 'shoppingCart',
+		component: './QuanLyDonHang',
+	},
+	{
+		path: '/thong-ke',
+		name: 'Thống kê',
+		icon: 'barChart',
+		component: './ThongKe',
+	},
 	{
 		path: '/notification',
 		routes: [
