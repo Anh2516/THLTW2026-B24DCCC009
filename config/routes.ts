@@ -1,4 +1,4 @@
-﻿export default [
+export default [
 	{
 		path: '/user',
 		layout: false,
@@ -56,7 +56,19 @@
 	// 		},
 	// 	],
 	// },
-
+	
+	{
+		path: '/bai1',
+		name: 'Bài 1 - Đoán số',
+		icon: 'BookOutlined',
+		component: './Bai1',
+	},
+	{
+		path: '/bai2',
+		name: 'Bài 2 - Theo dõi học tập',
+		icon: 'BookOutlined',
+		component: './Bai2',
+	},
 	{
 		path: '/notification',
 		routes: [
