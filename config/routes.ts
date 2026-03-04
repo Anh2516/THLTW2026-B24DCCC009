@@ -1,4 +1,4 @@
-﻿﻿export default [
+export default [
 	{
 		path: '/user',
 		layout: false,
@@ -58,22 +58,16 @@
 	// },
 	
 	{
-		path: '/quan-ly-san-pham',
-		name: 'Quản lý sản phẩm',
-		icon: 'shopping',
-		component: './QuanLySanPham',
+		path: '/bai1',
+		name: 'Bài 1 - Đoán số',
+		icon: 'BookOutlined',
+		component: './Bai1',
 	},
 	{
-		path: '/quan-ly-don-hang',
-		name: 'Quản lý đơn hàng',
-		icon: 'shoppingCart',
-		component: './QuanLyDonHang',
-	},
-	{
-		path: '/thong-ke',
-		name: 'Thống kê',
-		icon: 'barChart',
-		component: './ThongKe',
+		path: '/bai2',
+		name: 'Bài 2 - Theo dõi học tập',
+		icon: 'BookOutlined',
+		component: './Bai2',
 	},
 	{
 		path: '/notification',
