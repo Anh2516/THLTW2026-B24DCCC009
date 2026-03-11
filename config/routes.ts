@@ -48,12 +48,13 @@ export default [
 	component: './Bai1',
 	icon: 'CodeOutlined',
 },
-// {
-// 	path: '/Bai2',
-// 	name: 'Bai2',
-// 	component: './Bai2',
-// 	icon: 'FileTextOutlined',
-// },
+{
+	path: '/Bai2',
+	name: 'Bai2',
+	component: './Bai2',
+	icon: 'FileTextOutlined',
+},
+
 
 	// DANH MUC HE THONG
 	// {

@@ -1,13 +1,18 @@
 import { useState } from 'react';
 import { Button, Card, Col, Row, Typography, Space } from 'antd';
+import { ScissorOutlined, ThunderboltOutlined, BorderOutlined } from '@ant-design/icons';
+
 const { Title, Paragraph, Text } = Typography;
+
 type LuaChon = 'keo' | 'bua' | 'bao';
 type KetQua = 'thang' | 'thua' | 'hoa';
-const CAC_LUA_CHON: { id: LuaChon; ten: string}[] = [
-  { id: 'keo', ten: 'Kéo'},
-  { id: 'bua', ten: 'Búa'},
-  { id: 'bao', ten: 'Bao'},
+
+const CAC_LUA_CHON: { id: LuaChon; ten: string; icon: React.ReactNode }[] = [
+  { id: 'keo', ten: 'Kéo', icon: <ScissorOutlined /> },
+  { id: 'bua', ten: 'Búa', icon: <ThunderboltOutlined /> },
+  { id: 'bao', ten: 'Bao', icon: <BorderOutlined /> },
 ];
+
 interface BanGhiLichSu {
   lan: number;
   nguoiChoi: LuaChon;
