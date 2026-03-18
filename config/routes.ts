@@ -1,4 +1,4 @@
-﻿export default [
+export default [
 	{
 		path: '/user',
 		layout: false,
@@ -41,6 +41,12 @@
 		name: 'TodoList',
 		icon: 'OrderedListOutlined',
 		component: './TodoList',
+	},
+	{
+		path: '/app-quan-ly',
+		name: 'AppQuanLy',
+		icon: 'CalendarOutlined',
+		component: './AppQuanLy',
 	},
 
 	// DANH MUC HE THONG
