@@ -42,20 +42,25 @@
 		icon: 'OrderedListOutlined',
 		component: './TodoList',
 	},
-
-	// DANH MUC HE THONG
-	// {
-	// 	name: 'DanhMuc',
-	// 	path: '/danh-muc',
-	// 	icon: 'copy',
-	// 	routes: [
-	// 		{
-	// 			name: 'ChucVu',
-	// 			path: 'chuc-vu',
-	// 			component: './DanhMuc/ChucVu',
-	// 		},
-	// 	],
-	// },
+{
+	path: '/quan-ly-van-bang',
+	name: 'QuanLyVanBang',
+	icon: 'FileTextOutlined',
+	component: './QuanLyVanBang',
+},
+	//DANH MUC HE THONG
+	{
+		name: 'DanhMuc',
+		path: '/danh-muc',
+		icon: 'copy',
+		routes: [
+			{
+				name: 'ChucVu',
+				path: 'chuc-vu',
+				component: './DanhMuc/ChucVu',
+			},
+		],
+	},
 
 	{
 		path: '/notification',
