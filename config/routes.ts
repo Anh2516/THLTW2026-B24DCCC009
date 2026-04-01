@@ -43,10 +43,10 @@
 		component: './TodoList',
 	},
 {
-	path: '/quan-ly-van-bang',
-	name: 'QuanLyVanBang',
+	path: '/quan-ly-clb',
+	name: 'QuanLyCLB',
 	icon: 'FileTextOutlined',
-	component: './QuanLyVanBang',
+	component: './ManageClub',
 },
 	//DANH MUC HE THONG
 	{
