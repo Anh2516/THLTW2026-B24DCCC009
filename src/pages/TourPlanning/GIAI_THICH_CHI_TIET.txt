@@ -1,0 +1,225 @@
+TONG QUAN FOLDER TourPlanning
+=============================
+
+Muc tieu folder nay:
+- Xay dung man hinh lap ke hoach du lich gom 3 khoi chinh:
+  1) Kham pha diem den
+  2) Tao lich trinh
+  3) Quan ly ngan sach
+- Dong thoi co phan quan tri (Admin) de quan ly diem den va xem thong ke.
+
+Kien truc duoc tach theo huong:
+- types + du lieu mau + util tinh toan + hook state + component UI.
+- index.tsx chi giu vai tro "ghep layout", khong nhai logic.
+
+
+1) CAC FILE CHINH VA VAI TRO
+============================
+
+1.1. index.tsx
+- La entry page cua TourPlanning.
+- Goi hook useTourPlanning() de lay:
+  - du lieu destinations
+  - filter/sort state
+  - form + handler them lich trinh
+  - budget state
+  - cac thong ke phat sinh
+- Sap xep bo cuc:
+  - Hang 1: ExploreSection (khoi 1)
+  - Hang 2: ItinerarySection (khoi 2) + BudgetSection (khoi 3)
+
+1.2. types.ts
+- Chua toan bo kieu du lieu dung chung:
+  - DestinationType: 'Bien' | 'Nui' | 'Thanh pho'
+  - Destination: thong tin 1 diem den (ten, mo ta, anh, rating, chi phi...)
+  - PlanItem: 1 dong lich trinh duoc tao tu form
+  - PlannedRow: PlanItem + destination (da map sang object diem den)
+  - BudgetTotals: tong tien theo nhom + tong gio + tong chi
+  - DestinationInput: payload tao/sua destination
+
+1.3. mockDestinations.ts
+- Doi tuong du lieu mau ban dau (MOCK_DESTINATIONS).
+- Hook se nap list nay vao state de hien thi va thao tac CRUD.
+
+1.4. format.ts
+- Chua currencyFormatter (Intl.NumberFormat('vi-VN')).
+- Dung de format so tien dong bo toan bo UI.
+
+1.5. tourPlanningUtils.ts
+- Chua cac ham "thuan" (pure functions), khong phu thuoc React:
+  - filterAndSortDestinations(...)
+  - toPlannedRows(...)
+  - computeBudgetStats(...)
+  - computePopularLocation(...)
+  - topDestinationsByRating(...)
+  - computePopularDestination(...)
+  - buildMonthlyPlanStats(...)
+- Loi ich:
+  - de test
+  - de doc
+  - hook gon hon
+
+1.6. hooks/useTourPlanning.ts
+- Day la "bo nao state" cua page.
+- Quan ly:
+  - destinations (state co the them/sua/xoa)
+  - typeFilter, sortBy
+  - plan (cac item lich trinh)
+  - form tao lich trinh
+  - budgetLimit
+- Tinh toan phat sinh voi useMemo:
+  - filteredDestinations
+  - plannedDestinations
+  - budgetStats
+  - topDestinations
+  - popularLocation / popularDestination
+  - monthlyPlanStats
+  - monthlyRevenue
+- Expose cac action:
+  - addPlanItem()
+  - createDestination()
+  - updateDestination()
+  - deleteDestination()
+
+1.7. components/PageHeader.tsx
+- Hien thi title + subtitle cua trang.
+
+1.8. components/ExploreSection.tsx
+- Khoi 1 "Kham pha diem den":
+  - 2 bo loc:
+    - typeFilter
+    - sortBy
+  - render danh sach card diem den.
+- Moi card dung DestinationCard.
+
+1.9. components/DestinationCard.tsx
+- UI card nho cho 1 destination:
+  - anh
+  - ten
+  - vi tri
+  - tags (loai, rating, gia)
+
+1.10. components/ItinerarySection.tsx
+- Khoi 2 "Tao lich trinh":
+  - Form: chon destination + nhap day
+  - Nut Them -> goi onAdd (tu hook)
+  - Bang ket qua dung columns tu planTableColumns.tsx
+
+1.11. planTableColumns.tsx
+- Tach cau hinh cot bang lich trinh ra rieng cho de bao tri.
+- Cac cot:
+  - Ngay
+  - Diem den (co anh + location)
+  - Thoi gian tham quan
+  - Ngan sach tung diem
+
+1.12. components/BudgetSection.tsx
+- Khoi 3 "Quan ly ngan sach":
+  - Input so budgetLimit
+  - Statistic tong chi/tong gio
+  - Progress theo nhom chi:
+    - An uong
+    - Di chuyen
+    - Luu tru
+  - Alert:
+    - Do neu vuot budget
+    - Xanh neu trong budget
+
+1.13. components/AdminSection.tsx
+- Phan quan tri gom 2 tab:
+  A) Quan ly diem den
+    - Them/Sua/Xoa destination
+    - Form day du thuoc tinh:
+      mo ta, visitHours, food/stay/transport, rating...
+    - Upload hinh anh:
+      - co the dan URL
+      - hoac upload file local -> convert base64
+  B) Thong ke
+    - So lich trinh da tao
+    - Dia diem pho bien
+    - Khu vuc pho bien
+    - Doanh thu uoc tinh
+    - Ti le chi theo tung hang muc
+    - Bang thong ke lich trinh theo thang
+    - Top diem den theo rating
+
+1.14. AdminDashboard/index.tsx
+- Trang demo/rieng cho AdminSection.
+- Truyen mock props de hien UI Admin doc lap.
+
+
+2) LUONG DU LIEU (DATA FLOW)
+============================
+
+Luot tong quan:
+1. useTourPlanning khoi tao state destinations tu MOCK_DESTINATIONS.
+2. User thao tac bo loc o ExploreSection -> setTypeFilter/setSortBy.
+3. Hook tinh filteredDestinations -> UI card update.
+4. User tao lich trinh o ItinerarySection:
+   - validate form
+   - add vao plan[] voi createdAt
+5. Hook map plan[] + destinations -> plannedDestinations.
+6. Hook tinh budgetStats tu plannedDestinations.
+7. BudgetSection va AdminSection nhan budgetStats de render.
+8. Admin CRUD destination:
+   - create/update/delete cap nhat destinations state
+   - cac section khac nhan du lieu moi tu hook.
+
+
+3) GIAI THICH CAC THONG KE
+==========================
+
+3.1. monthlyRevenue
+- Dang dung cong thuc uoc tinh:
+  monthlyRevenue = budgetStats.total * 1.25
+- Nghia la doanh thu uoc tinh bang 125% tong chi.
+- Ban co the doi sang cong thuc thuc te sau.
+
+3.2. monthlyPlanStats
+- Tu plan[].createdAt, group theo YYYY-MM.
+- Tra ve mang [{ month, count }] de do bang.
+
+3.3. popularLocation / popularDestination
+- Dem tan suat xuat hien destination trong plan[].
+- Lay phan tu co so lan xuat hien cao nhat.
+
+
+4) VI SAO CODE DUOC TACH NHU VAY
+================================
+
+- De hoc de hon:
+  - Moi file 1 muc tieu ro rang.
+- De mo rong:
+  - Them chart that, API that, pagination that... khong lam vo file chinh.
+- De test:
+  - util functions co the test doc lap.
+- De tai su dung:
+  - card/table columns/component co the mang sang page khac.
+
+
+5) GOI Y NANG CAP TIEP
+======================
+
+1. Luu destinations/plan vao localStorage de reload khong mat du lieu.
+2. Tach form Admin thanh component rieng (DestinationFormModal).
+3. Them validation nang cao:
+   - rating 1..5
+   - chi phi khong am
+   - image URL hop le
+4. Them bieu do (Pie/Column) cho thong ke.
+5. Noi API that (CRUD destination + plan) thay mock state.
+
+
+6) TIPS DOC CODE NHANH
+======================
+
+Thu tu doc de hieu nhanh:
+1. types.ts
+2. mockDestinations.ts
+3. tourPlanningUtils.ts
+4. hooks/useTourPlanning.ts
+5. components/*
+6. index.tsx
+
+Neu ban muon, minh co the tao them mot file "so do luong xu ly" dang pseudo-flow
+de hoc lai nhanh hon (dang buoc 1 -> buoc 2 -> buoc 3).
