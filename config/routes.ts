@@ -15,21 +15,27 @@
 			},
 		],
 	},
+{
+	path: '/quanlyphonghoc',
+	name: 'QuanLyPhongHoc',
+	icon: 'BookOutlined',
+	component: './QuanLyPhongHoc',
+},
 
 	///////////////////////////////////
-	// DEFAULT MENU
-	// {
-	// 	path: '/dashboard',
-	// 	name: 'Dashboard',
-	// 	component: './TrangChu',
-	// 	icon: 'HomeOutlined',
-	// },
-	// {
-	// 	path: '/gioi-thieu',
-	// 	name: 'About',
-	// 	component: './TienIch/GioiThieu',
-	// 	hideInMenu: true,
-	// },
+	//DEFAULT MENU
+	{
+		path: '/dashboard',
+		name: 'Dashboard',
+		component: './TrangChu',
+		icon: 'HomeOutlined',
+	},
+	{
+		path: '/gioi-thieu',
+		name: 'About',
+		component: './TienIch/GioiThieu',
+		hideInMenu: true,
+	},
 	// {
 	// 	path: '/random-user',
 	// 	name: 'RandomUser',
@@ -43,20 +49,7 @@
 	// 	component: './TodoList',
 	// },
 	
-	{
-		path: '/adminDashboard',
-		name: 'AdminDashboard',
-		icon: 'DashboardOutlined',
-		component: './TourPlanning/AdminDashboard',
-	},
 
-
-{
-	path: '/tourplanning',
-	name: 'TourPlanning',
-	icon: 'FileTextOutlined',
-	component: './TourPlanning',
-},
 	//DANH MUC HE THONG
 	// {
 	// 	name: 'DanhMuc',
