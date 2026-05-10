@@ -1,4 +1,4 @@
-﻿export default [
+export default [
 	{
 		path: '/user',
 		layout: false,
@@ -31,23 +31,17 @@
 		hideInMenu: true,
 	},
 	{
-		path: '/random-user',
-		name: 'RandomUser',
-		component: './RandomUser',
-		icon: 'ArrowsAltOutlined',
+		path: '/du-lich',
+		name: 'DuLich',
+		icon: 'GlobalOutlined',
+		component: './ManageTour',
 	},
 	{
-		path: '/todo-list',
-		name: 'TodoList',
-		icon: 'OrderedListOutlined',
-		component: './TodoList',
+		path: '/quan-ly-clb',
+		name: 'QuanLyCLB',
+		icon: 'FileTextOutlined',
+		component: './ManageClub',
 	},
-{
-	path: '/quan-ly-clb',
-	name: 'QuanLyCLB',
-	icon: 'FileTextOutlined',
-	component: './ManageClub',
-},
 	//DANH MUC HE THONG
 	{
 		name: 'DanhMuc',
