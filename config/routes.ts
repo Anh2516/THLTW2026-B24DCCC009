@@ -44,10 +44,10 @@ export default [
 	},
 
 	{
-		path: '/theo-doi-cv-ca-nhan',
-		name: 'TheoDoiCVCanhan',
-		icon: 'ScheduleOutlined',
-		component: './TheoDoiCVCanhan',
+		path: '/manage',
+		name: 'Manage',
+		icon: 'OrderedListOutlined',
+		component: './Manage',
 	},
 
 	// DANH MUC HE THONG
