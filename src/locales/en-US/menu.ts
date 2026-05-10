@@ -5,6 +5,7 @@ export default {
 	'menu.Dashboard': 'Trang chủ',
 	'menu.News': 'Tin tức',
 	'menu.TheoDoiCVCanhan': 'Personal tasks',
+	'menu.DuLich': 'Travel planner',
 
 	'menu.DanhMuc': 'Danh mục',
 	'menu.DanhMuc.ChucVu': 'Chức vụ',

@@ -31,23 +31,10 @@ export default [
 		hideInMenu: true,
 	},
 	{
-		path: '/random-user',
-		name: 'RandomUser',
-		component: './RandomUser',
-		icon: 'ArrowsAltOutlined',
-	},
-	{
-		path: '/todo-list',
-		name: 'TodoList',
-		icon: 'OrderedListOutlined',
-		component: './TodoList',
-	},
-
-	{
-		path: '/manage',
-		name: 'Manage',
-		icon: 'OrderedListOutlined',
-		component: './Manage',
+		path: '/du-lich',
+		name: 'DuLich',
+		icon: 'GlobalOutlined',
+		component: './ManageTour',
 	},
 
 	// DANH MUC HE THONG
